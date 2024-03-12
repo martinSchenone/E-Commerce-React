@@ -4,6 +4,7 @@ import "./App.css";
 import { Home } from "./components/Home";
 import { OnlyProd } from "./components/OnlyProd";
 import { ShowCart } from "./components/ShowCart";
+import { getProds } from "./utils/getProds";
 
 /*
 Terminar nav y hacerlo responsive
@@ -13,7 +14,7 @@ crear el loader y error component
 crear el searcher y el filtro por categorias, precio o ratings */
 function App() {
   const [products, setProducts] = useState([]);
-  const [limite, setLimite] = useState(6);
+  const [limite, setLimite] = useState(8);
   const [error, setError] = useState({
     isError: false,
     errorMessage: "",
@@ -21,29 +22,10 @@ function App() {
   const [load, setLoad] = useState(true);
   const [toast, setToast] = useState(false);
 
-  const getProds = async (limit) => {
-    const res = await fetch(`https://fakestoreapi.com/products?limit=${limit}`);
-    try {
-      const data = await res.json();
-      if (res.ok) {
-        setProducts(data);
-        setError(null);
-      }
-    } catch (err) {
-      setError({
-        ...error,
-        isError: true,
-        errorMessage: "There was an error obtaining data",
-      });
-      setProducts(null);
-    } finally {
-      setLoad(false);
-    }
-  };
   const buttonSeeMore = () => {
     if (products) {
       if (limite < 20) {
-        setLimite((prevLimite) => prevLimite + 6);
+        setLimite((prevLimite) => prevLimite + 4);
       } else {
         setToast(true);
       }
@@ -51,7 +33,18 @@ function App() {
   };
 
   useEffect(() => {
-    getProds(limite);
+    getProds(limite)
+      .then((data) => {
+        setProducts(data);
+      })
+      .catch(() => {
+        setError({
+          ...error,
+          isError: true,
+          errorMessage: "There was an error obtaining data",
+        });
+      })
+      .finally(setLoad(false));
   }, [limite]);
   return (
     <>
