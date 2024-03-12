@@ -3,7 +3,16 @@ import { Load } from "./Load";
 import { Error } from "./Error";
 import { Product } from "./Product";
 import { Toast } from "./Toast";
-export const Home = ({ toast, products, buttonSeeMore, load, error }) => {
+import { ButtonSeeMore } from "./ButtonSeeMore";
+export const Home = ({
+  setToast,
+  toast,
+  products,
+  buttonSeeMore,
+  load,
+  error,
+  limite,
+}) => {
   return (
     <>
       <section className="flex flex-col justify-center gap-10">
@@ -14,19 +23,18 @@ export const Home = ({ toast, products, buttonSeeMore, load, error }) => {
         <div
           id="home"
           className="grid gap-20 min-h-screen p-2 "
-          style={{ gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))", }}
+          style={{ gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))" }}
         >
           {products &&
             products.map((singleProd) => (
               <Product key={singleProd.id} product={singleProd} />
             ))}
         </div>
-        <button
-          onClick={buttonSeeMore}
-          className="btn my-5 bg-slate-300 text-2xl text-center btn-wide border self-center"
-        >
-          See more
-        </button>
+        <ButtonSeeMore
+          setToast={setToast}
+          limite={limite}
+          buttonSeeMore={buttonSeeMore}
+        />
         {toast && <Toast>There are no more products to see...</Toast>}
       </section>
     </>

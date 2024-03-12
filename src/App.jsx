@@ -5,13 +5,12 @@ import { Home } from "./components/Home";
 import { OnlyProd } from "./components/OnlyProd";
 import { ShowCart } from "./components/ShowCart";
 import { getProds } from "./utils/getProds";
-
 /*
-Terminar nav y hacerlo responsive
-empezar con el carrito (sessionStorage)
-empezar con el auth (firebase)
-crear el loader y error component
-crear el searcher y el filtro por categorias, precio o ratings */
+Terminar nav y hacerlo responsive V
+empezar con el carrito (sessionStorage) V
+empezar con el auth (firebase) X
+crear el loader y error component V
+crear el searcher y el filtro por categorias, precio o ratings  X */
 function App() {
   const [products, setProducts] = useState([]);
   const [limite, setLimite] = useState(8);
@@ -28,6 +27,7 @@ function App() {
         setLimite((prevLimite) => prevLimite + 4);
       } else {
         setToast(true);
+        limite >= 20 ? setTimeout(() => setToast(false), 4000) : null;
       }
     } else alert("There was an error obtaining products");
   };
@@ -58,6 +58,8 @@ function App() {
               load={load}
               error={error}
               toast={toast}
+              setToast={setToast}
+              limite={limite}
             />
           }
         />
