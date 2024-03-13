@@ -30,11 +30,7 @@ export const Home = ({
               <Product key={singleProd.id} product={singleProd} />
             ))}
         </div>
-        <ButtonSeeMore
-          setToast={setToast}
-          limite={limite}
-          buttonSeeMore={buttonSeeMore}
-        />
+        <ButtonSeeMore limite={limite} buttonSeeMore={buttonSeeMore} />
         {toast && <Toast>There are no more products to see...</Toast>}
       </section>
     </>

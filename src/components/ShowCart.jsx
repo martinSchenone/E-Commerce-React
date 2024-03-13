@@ -19,12 +19,15 @@ export const ShowCart = () => {
       .toFixed(2) || [];
   useEffect(() => {}, [cart]);
   return (
-    <div className="w-full mx-auto flex flex-col items-center justify-center gap-10 p-5 relative">
+    <div className="w-full mx-auto flex flex-col items-center justify-center gap-10 p-5 relative  ">
       <div className="text-2xl font-bold">
         <h1>- Your cart -</h1>
       </div>
-      <div className="flex flex-col relative container items-center justify-center md:flex-row">
+      <div className="flex flex-col relative container items-center justify-center md:flex-row mb-[20rem] z-10 md:mb-0">
         <div className="flex flex-col gap-10 mx-auto px-2 items-center justify-center mb-40 md:flex-[2]">
+        {cart.length == 0 && (<div className="flex text-2xl font-bold self-center items-center">
+          <h1>There`s no product in cart</h1>
+        </div>)}
           {cart &&
             cart?.map((cartItem) => (
               <div
@@ -57,7 +60,7 @@ export const ShowCart = () => {
               </div>
             ))}
         </div>
-        <div className="flex flex-col items-center md:flex-[1] md:self-start md:rounded-xl border-t-slate-300 justify-center total_cont fixed md:relative bottom-0 border w-full bg-slate-100 p-4 gap-2">
+        <div className=" md:mb-0 flex flex-col items-center md:flex-[1] md:self-start md:rounded-xl border-t-slate-300 justify-center total_cont fixed md:relative bottom-0 border w-full bg-slate-100 p-4 gap-2">
           <div
             className="flex  w-full justify-between   text-sm
           "

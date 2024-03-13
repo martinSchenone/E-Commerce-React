@@ -9,9 +9,11 @@ import { Footer } from "./components/Footer.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ContextProvider>
     <BrowserRouter>
-      <Navbar />
-      <App />
-      <Footer/>
+      <div className="container relative min-h-screen">
+        <Navbar />
+        <App />
+        <Footer />
+      </div>
     </BrowserRouter>
   </ContextProvider>
 );

@@ -52,9 +52,9 @@ export const OnlyProd = () => {
   useEffect(() => {
     getOnlyProd(id);
     setTimeout(() => setWasAdd(false), 3000);
-  }, [id,cart]);
+  }, [id, cart]);
   return (
-    <div className="flex  justify-center min-h-[100dvh] p-5 ">
+    <div className="flex justify-center min-h-screen p-5">
       {load && <Load>Loading Product...</Load>}
       {error && <Error error={error} />}
       {onlyProd && (

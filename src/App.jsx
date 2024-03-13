@@ -28,6 +28,7 @@ function App() {
       } else {
         setToast(true);
         limite >= 20 ? setTimeout(() => setToast(false), 4000) : null;
+       
       }
     } else alert("There was an error obtaining products");
   };
