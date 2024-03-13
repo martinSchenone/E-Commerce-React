@@ -9,7 +9,7 @@ import { Footer } from "./components/Footer.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ContextProvider>
     <BrowserRouter>
-      <div className="container relative min-h-screen">
+      <div className="container relative min-h-screen mx-auto">
         <Navbar />
         <App />
         <Footer />

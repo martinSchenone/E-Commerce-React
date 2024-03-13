@@ -5,13 +5,13 @@ export const Product = ({ product }) => {
     <Link
       to={`/product/${product.id}`}
       key={product.id}
-      className="h-[min(30rem,500px)] border shadow-xl rounded flex flex-col justify-between items-center"
+      className=" border shadow-xl rounded flex flex-col justify- items-center justify-between"
     >
-      <div className="p-4 h-3/4">
-        <img src={product.image} className="h-full w-full object-contain" />
+      <div className="img p-4 h-3/4 border">
+        <img src={product.image} className="h-full w-full object-contain " />
       </div>
       <div
-        className="py-5 w-full shadow bg-slate-100 text-lg font-bold px-5 hover:drop-shadow-xl cursor-pointer
+        className="title py-5 w-full shadow h-1/4 bg-slate-100 text-lg font-bold px-5 hover:drop-shadow-xl cursor-pointer
                "
       >
         <h1>

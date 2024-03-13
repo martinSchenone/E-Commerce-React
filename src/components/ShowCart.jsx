@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import { CommerceContext } from "../context/context";
 import trashcan from "../assets/trashcan.svg";
+import { NoProductsCart } from "./NoProductsCart";
 
 export const ShowCart = () => {
   const { cart, setCart } = useContext(CommerceContext);
@@ -19,15 +20,10 @@ export const ShowCart = () => {
       .toFixed(2) || [];
   useEffect(() => {}, [cart]);
   return (
-    <div className="w-full mx-auto flex flex-col items-center justify-center gap-10 p-5 relative  ">
-      <div className="text-2xl font-bold">
-        <h1>- Your cart -</h1>
-      </div>
-      <div className="flex flex-col relative container items-center justify-center md:flex-row mb-[20rem] z-10 md:mb-0">
+    <div className="w-full mx-auto flex flex-col items-center justify-center gap-10 p-5 relative   ">
+      <div className="flex flex-col relative container items-center justify-center md:flex-row mb-[20rem] z-10 md:mb-0 md:gap-10">
         <div className="flex flex-col gap-10 mx-auto px-2 items-center justify-center mb-40 md:flex-[2]">
-        {cart.length == 0 && (<div className="flex text-2xl font-bold self-center items-center">
-          <h1>There`s no product in cart</h1>
-        </div>)}
+          {cart.length == 0 && <NoProductsCart />}
           {cart &&
             cart?.map((cartItem) => (
               <div
@@ -37,10 +33,10 @@ export const ShowCart = () => {
                 <div className="cart_image h-[min(30vh,600px)] md:h-52 md:flex-[1.5]">
                   <img
                     src={cartItem.image}
-                    className="h-full w-full object-contain md:max-w-28  "
+                    className="h-full w-full object-contain md:max-w-28   "
                   />
                 </div>
-                <div className="cart_title text-md lg:text-xl font-semibold md:flex-1">
+                <div className="cart_title text-md lg:text-xl font-normal md:flex-1">
                   <h1>{cartItem.title}</h1>
                 </div>
                 <div className="self-start md:self-center  text-sm md:text-lg md:flex-1">
@@ -54,13 +50,17 @@ export const ShowCart = () => {
                     onClick={() => deleteProd(cartItem)}
                     className="btn btn-sm btn-warning"
                   >
-                    <img src={trashcan} className="min-w-6 h-6"/>
+                    <img src={trashcan} className="min-w-6 h-6" />
                   </button>
                 </div>
               </div>
             ))}
         </div>
-        <div className=" md:mb-0 flex flex-col items-center md:flex-[1] md:self-start md:rounded-xl border-t-slate-300 justify-center total_cont fixed md:relative bottom-0 border w-full bg-slate-100 p-4 gap-2">
+        <div
+          className={`md:mb-0 flex flex-col items-center md:flex-[1] md:self-start md:rounded-xl border-t-slate-300 justify-center total_cont fixed md:relative bottom-0 border w-full bg-slate-100 p-4 gap-2 ${
+            cart.length == 0 ? "md:opacity-70": "opacity-100"
+          }`}
+        >
           <div
             className="flex  w-full justify-between   text-sm
           "
@@ -76,7 +76,11 @@ export const ShowCart = () => {
             <span> Total</span>
             <span className="uppercase font-bold ">$ {itemsQuantity}</span>
           </div>
-          <div className="flex items-center justify-center border btn bg-green-400 hover:bg-green-600 border- w-full uppercase text-xl ">
+          <div
+            className={`flex items-center justify-center border btn bg-green-400 hover:bg-green-600 border- w-full uppercase text-xl ${
+              cart.length == 0 ? "btn-disabled" : ""
+            }`}
+          >
             <span>Buy</span>
           </div>
         </div>

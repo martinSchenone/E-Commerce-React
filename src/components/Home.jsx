@@ -23,7 +23,7 @@ export const Home = ({
         <div
           id="home"
           className="grid gap-20 min-h-screen p-2 "
-          style={{ gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))" }}
+          style={{ gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))" }}
         >
           {products &&
             products.map((singleProd) => (
