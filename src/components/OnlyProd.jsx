@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { CommerceContext } from "../context/context";
-import { Load } from "./Load";
 import { OnlyProdCard } from "./OnlyProdCard";
 import { Error } from "./Error";
+import { OnlyProdLoad } from "./OnlyProdLoad";
 export const OnlyProd = () => {
   const { cart, setCart } = useContext(CommerceContext);
   const { id } = useParams();
@@ -55,7 +55,7 @@ export const OnlyProd = () => {
   }, [id, cart]);
   return (
     <div className="flex justify-center min-h-screen p-5">
-      {load && <Load>Loading Product...</Load>}
+      {load && <OnlyProdLoad />}
       {error && <Error error={error} />}
       {onlyProd && (
         <OnlyProdCard

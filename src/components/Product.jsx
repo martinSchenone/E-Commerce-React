@@ -11,7 +11,7 @@ export const Product = ({ product }) => {
         <img src={product.image} className="h-full w-full object-contain " />
       </div>
       <div
-        className="title py-5 w-full shadow h-1/4 bg-slate-100 text-lg font-bold px-5 hover:drop-shadow-xl cursor-pointer
+        className="title py-20 border flex flex-col items-start justify-center w-full shadow h-1/4 bg-slate-100 text-lg font-bold px-5 hover:drop-shadow-xl cursor-pointer
                "
       >
         <h1>

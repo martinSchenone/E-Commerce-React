@@ -4,7 +4,7 @@ export const OnlyProdCard = ({ onlyProd, addToCart, setWasAdd, wasAdd }) => {
   return (
     <div
       key={onlyProd.id}
-      className="w-[min(80%,600px)] border   shadow-xl rounded flex flex-col justify-center items-center mb-20"
+      className="w-[min(80%,600px)] border   shadow-xl rounded flex flex-col justify-center items-center mb-40"
     >
       <div className="h-full px-10 items-center flex justify-center">
         <img src={onlyProd.image} className="max-h-72" />
