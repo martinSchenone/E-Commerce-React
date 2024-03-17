@@ -4,7 +4,7 @@ import { Error } from "./Error";
 import { Product } from "./Product";
 import { Toast } from "./Toast";
 import { ButtonSeeMore } from "./ButtonSeeMore";
-import {useEffect, useRef, useState} from "react";
+import { useEffect, useRef, useState } from "react";
 export const Home = ({
   setToast,
   toast,
@@ -21,8 +21,7 @@ export const Home = ({
       const entry = entries[0];
       setMyElementIsVisible(entry.isIntersecting);
     });
-    observer.observe(myRef.current);
-
+    observer.observe(myRef.current); 
     return () => {
       observer.disconnect();
     };
@@ -31,7 +30,7 @@ export const Home = ({
   return (
     <>
       <section className="flex flex-col justify-center gap-10">
-          <Cover />
+        <Cover />
         {load && <Load>Loading Store...</Load>}
         {error && <Error error={error} />}
 
@@ -39,7 +38,8 @@ export const Home = ({
           ref={myRef}
           id="home"
           className={`grid gap-20 min-h-screen p-2 
-            ${myElementIsVisible ? "opacity-100" : " opacity-0"}`}
+          ${myElementIsVisible ? "translate-x-0 opacity-100}" : "-translate-x-full opacity-0"}
+            `}
           style={{
             gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))",
             transitionDuration: "1s",
