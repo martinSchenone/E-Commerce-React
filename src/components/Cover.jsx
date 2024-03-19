@@ -2,7 +2,7 @@ import cover from "../assets/fati-mohebbi-u-n7DjveEQs-unsplash.jpg";
 
 export const Cover = () => {
   return (
-    <div className="shadow-xl cover flex flex-col md:flex-row border min-h-[80vh] flex-wrap flex-grow-1">
+    <div className="shadow-xl cover flex flex-col md:flex-row border min-h-[80dvh] flex-wrap flex-grow-1">
       <div className="flex-1 ">
         <img
           src={cover}

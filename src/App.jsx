@@ -5,6 +5,7 @@ import { Home } from "./components/Home";
 import { OnlyProd } from "./components/OnlyProd";
 import { ShowCart } from "./components/ShowCart";
 import { getProds } from "./utils/getProds";
+import { SearcherPage } from "./components/SearcherPage";
 /*
 Terminar nav y hacerlo responsive V
 empezar con el carrito (sessionStorage) V
@@ -28,13 +29,12 @@ function App() {
       } else {
         setToast(true);
         limite >= 20 ? setTimeout(() => setToast(false), 4000) : null;
-       
       }
     } else alert("There was an error obtaining products");
   };
 
   useEffect(() => {
-    getProds(limite)
+    getProds(`?limit=${limite}`)
       .then((data) => {
         setProducts(data);
       })
@@ -66,6 +66,7 @@ function App() {
         />
         <Route path="/product/:id" element={<OnlyProd />} />
         <Route path="/user/cart" element={<ShowCart />} />
+        <Route path="/category/:params" element={<SearcherPage />} />
       </Routes>
     </>
   );

@@ -54,7 +54,7 @@ export const OnlyProd = () => {
     setTimeout(() => setWasAdd(false), 3000);
   }, [id, cart]);
   return (
-    <div className="flex justify-center min-h-screen p-5">
+    <section className="flex justify-center min-h-screen p-5">
       {load && <OnlyProdLoad />}
       {error && <Error error={error} />}
       {onlyProd && (
@@ -65,6 +65,6 @@ export const OnlyProd = () => {
           addToCart={addToCart}
         />
       )}
-    </div>
+    </section>
   );
 };

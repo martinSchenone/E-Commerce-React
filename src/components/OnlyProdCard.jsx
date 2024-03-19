@@ -1,5 +1,4 @@
 import { Toast } from "./Toast";
-
 export const OnlyProdCard = ({ onlyProd, addToCart, setWasAdd, wasAdd }) => {
   return (
     <div
