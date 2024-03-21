@@ -6,6 +6,7 @@ import { OnlyProd } from "./components/OnlyProd";
 import { ShowCart } from "./components/ShowCart";
 import { getProds } from "./utils/getProds";
 import { SearcherPage } from "./components/SearcherPage";
+import { UserLogin } from "./components/UserLogin";
 /*
 Terminar nav y hacerlo responsive V
 empezar con el carrito (sessionStorage) V
@@ -67,6 +68,8 @@ function App() {
         <Route path="/product/:id" element={<OnlyProd />} />
         <Route path="/user/cart" element={<ShowCart />} />
         <Route path="/category/:params" element={<SearcherPage />} />
+        <Route path="/login" element={<UserLogin />} />
+
       </Routes>
     </>
   );
