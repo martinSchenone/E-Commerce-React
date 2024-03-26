@@ -1,17 +1,18 @@
 import { Link } from "react-router-dom";
-import userIcon from "../assets/userIcon.png";
-
+const handleForm = (e) => {
+  e.preventDefault();
+};
 export const Login = () => {
   return (
-    <div className="p-5 md:p-10">
-      <form className="form-control  w-full  gap-10">
+    <div className="p-5 md:p-10 mt-20  border bg-[#f5f6f7] shadow-lg rounded-lg">
+      <form onSubmit={handleForm} className="form-control  w-full  gap-10">
         <div className="flex flex-col gap-10">
           <label className="label flex-col justify-start items-start text-2xl font-semibold gap-5 text-center">
             <span className="cursor-pointer border-b-2 border-slate-500 ">
               Username
             </span>
             <input
-              className="input w-[min(100%,600px)]  bg-slate-100 shadow-lg "
+              className="input w-[min(100%,600px)]  bg-slate-200 shadow-lg "
               placeholder="Type your username"
               type="text"
             />
@@ -21,7 +22,7 @@ export const Login = () => {
               Password
             </span>
             <input
-              className="input w-[min(100%,600px)]  bg-slate-100 shadow-lg "
+              className="input w-[min(100%,600px)]  bg-slate-200 shadow-lg "
               placeholder="Type your password"
               type="password"
             />
@@ -37,7 +38,10 @@ export const Login = () => {
             Log in
           </button>
           <span>or sign up</span>
-          <Link className="link px-8 rounded bg-yellow-200 font-semibold hover:opacity-80 hover:bg-yellow-300 border-none text-md md:text-xl">
+          <Link
+            to={"/register"}
+            className="link px-8 rounded bg-yellow-200 font-semibold hover:opacity-80 hover:bg-yellow-300 border-none text-md md:text-xl"
+          >
             Sign up
           </Link>
         </div>
