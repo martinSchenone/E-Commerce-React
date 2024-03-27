@@ -40,7 +40,7 @@ export const Login = () => {
           <span>or sign up</span>
           <Link
             to={"/register"}
-            className="link px-8 rounded bg-yellow-200 font-semibold hover:opacity-80 hover:bg-yellow-300 border-none text-md md:text-xl"
+            className="link px-8 rounded bg-yellow-300 font-semibold hover:opacity-80 hover:bg-yellow-400 border-none text-md md:text-xl"
           >
             Sign up
           </Link>

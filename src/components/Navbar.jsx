@@ -53,20 +53,20 @@ export const Navbar = () => {
         <ul className="navbar-end gap-4 text-lg font-semibold md:pr-5">
           <li className="link-hover cursor-pointer">
             <NavLink to={"/"}>
-              <img src={home} alt="home icon from icons8" className="h-6 w-6" />
+              <img src={home} alt="home icon from icons8" className="h-5 w-5 lg:w-7 lg:h-7" />
             </NavLink>
           </li>
           <li className="link-hover cursor-pointer">
             <NavLink to={"/user/cart"}>
-              <img src={cart} alt="cart icon from icons8" className="h-6 w-6" />
+              <img src={cart} alt="cart icon from icons8" className="h-5 w-5 lg:w-7 lg:h-7" />
             </NavLink>
           </li>
-          <li className="link-hover cursor-pointer">
+          <li className="link-hover cursor-pointer scroll">
             <NavLink to={"/login"}>
               <img
                 src={userIcon}
                 alt="user icon from icons8"
-                className="h-6 w-6"
+                className="h-5 w-5 lg:w-7 lg:h-7"
               />
             </NavLink>
           </li>

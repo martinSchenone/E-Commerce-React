@@ -21,7 +21,7 @@ export const Home = ({
       const entry = entries[0];
       setMyElementIsVisible(entry.isIntersecting);
     });
-    observer.observe(myRef.current); 
+    observer.observe(myRef.current);
     return () => {
       observer.disconnect();
     };
@@ -29,29 +29,37 @@ export const Home = ({
 
   return (
     <>
-      <section className="flex flex-col justify-center gap-10">
+      <section className="flex flex-col justify-center gap-10 ">
         <Cover />
         {load && <Load>Loading Store...</Load>}
         {error && <Error error={error} />}
-
-        <div
-          ref={myRef}
-          id="home"
-          className={`grid gap-20 min-h-screen p-2 
-          ${myElementIsVisible ? "translate-x-0 opacity-100}" : "-translate-x-full opacity-0"}
+        <div className="flex flex-col justify-center mx-auto max-w-7xl w-full gap-10">
+          <div className="self-start text-center text-3xl font-semibold border-b-2 border-black">
+            <h1>HOME</h1>
+          </div>
+          <div
+            ref={myRef}
+            id="home"
+            className={`grid gap-20 min-h-screen 
+          ${
+            myElementIsVisible
+              ? "translate-x-0 opacity-100}"
+              : "-translate-x-full opacity-0"
+          }
             `}
-          style={{
-            gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))",
-            transitionDuration: "1s",
-          }}
-        >
-          {products &&
-            products.map((singleProd) => (
-              <Product key={singleProd.id} product={singleProd} />
-            ))}
+            style={{
+              gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))",
+              transitionDuration: "1s",
+            }}
+          >
+            {products &&
+              products.map((singleProd) => (
+                <Product key={singleProd.id} product={singleProd} />
+              ))}
+          </div>
+          <ButtonSeeMore limite={limite} buttonSeeMore={buttonSeeMore} />
+          {toast && <Toast>There are no more products to see...</Toast>}
         </div>
-        <ButtonSeeMore limite={limite} buttonSeeMore={buttonSeeMore} />
-        {toast && <Toast>There are no more products to see...</Toast>}
       </section>
     </>
   );

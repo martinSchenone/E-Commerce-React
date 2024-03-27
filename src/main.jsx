@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <div className="min-h-screen relative">
         <Navbar />
-        <div className="relative min-h-screen mx-auto max-w-7xl w-full">
+        <div className="relative min-h-screen w-full">
           <App />
         </div>
         <Footer />

@@ -18,25 +18,25 @@ export const SearcherPage = () => {
       .then((data) => {
         setProducts(data);
       })
-      .catch(() => {
+      .catch((e) => {
         setError({
           ...error,
           isError: true,
-          errorMessage: "There was an error obtaining products",
+          errorMessage: "There was an error obtaining products" + e,
         });
       })
       .finally(setLoad(false));
     return () => {
       setProducts(null);
     };
-  }, [params]);
+  }, [params,error]);
   return (
-    <section className="searchPage flex flex-col justify-center gap-5 pb-40  px-2">
-      {load && <Load>Loading products</Load>}
+    <section className="searchPage flex flex-col justify-center pb-40  px-2 mx-auto max-w-7xl w-full gap-10">
       {error && <Error error={error} />}
       <div className="text-2xl font-semibold flex flex-col gap-2">
         <h1 className="uppercase border-b-2  w-fit">{params}</h1>
       </div>
+      {load && <Load>Loading products</Load>}
       <div
         id="home"
         className={`grid gap-20 min-h-screen `}
