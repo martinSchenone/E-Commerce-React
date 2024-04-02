@@ -7,6 +7,7 @@ import { ShowCart } from "./components/ShowCart";
 import { getProds } from "./utils/getProds";
 import { SearcherPage } from "./components/SearcherPage";
 import { UserLogin } from "./components/UserLogin";
+import {UserProfile} from './components/UserProfile'
 import { UserRegister } from "./components/UserRegister";
 /*
 Terminar nav y hacerlo responsive V
@@ -74,6 +75,8 @@ function App() {
           path="/register"
           element={<UserRegister toast={toast} setToast={setToast} />}
         />
+        <Route path="/user/profile" element={<UserProfile />} />
+
       </Routes>
     </>
   );

@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Register } from "./Register";
 import { Toast } from "./Toast";
+import { CommerceContext } from "../context/context";
 /* me falta arreglar el toast, me falta verificar el user y crearlo previamente en un contexto y obtenerlo del localstorge */
 export const UserRegister = ({ setToast, toast }) => {
+  const { userValues, setUserValues } = useContext(CommerceContext);
   const [values, setValues] = useState({
     username: "",
     email: "",
@@ -14,18 +16,18 @@ export const UserRegister = ({ setToast, toast }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    setValues({
+    setUserValues({
       ...values,
       [e.target.name]: e.target.value,
     });
-    addToLocal(values);
+    addToLocal({...values,userValues});
     setToast(true);
     setTimeout(() => {
       setToast(false);
     }, 2500);
   };
   const addToLocal = (user) => {
-    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("userValues", JSON.stringify(user));
   };
   return (
     <section className="max-w-xl mx-auto w-full  min-h-screen bg-white">

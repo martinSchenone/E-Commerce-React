@@ -34,13 +34,13 @@ export const Home = ({
         {load && <Load>Loading Store...</Load>}
         {error && <Error error={error} />}
         <div className="flex flex-col justify-center mx-auto max-w-7xl w-full gap-10">
-          <div className="self-start text-center text-3xl font-semibold border-b-2 border-black">
+          <div className="uppercase -tracking-tighter w-full xl:rounded xl:text-4xl bg-slate-300 py-5 text-center text-3xl font-semibold  shadow-lg">
             <h1>HOME</h1>
           </div>
           <div
             ref={myRef}
             id="home"
-            className={`grid gap-20 min-h-screen 
+            className={`grid gap-20 min-h-screen p-2 
           ${
             myElementIsVisible
               ? "translate-x-0 opacity-100}"
