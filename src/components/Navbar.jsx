@@ -20,7 +20,7 @@ export const Navbar = () => {
     getProds("/categories").then((data) => setCategories(data));
   }, []);
   return (
-    <div className="h-auto max-h-20 shadow-xl w-full mb-10">
+    <div className="h-auto max-h-20 shadow-xl w-full   bg-slate-50">
       <nav className="navbar gap-5 md:gap-0">
         <div className="sm:navbar-start ard-title">
           <NavLink to={"/"} className={"relative"}>

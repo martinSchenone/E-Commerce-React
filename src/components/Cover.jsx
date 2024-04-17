@@ -1,22 +1,23 @@
 import cover from "../assets/fati-mohebbi-u-n7DjveEQs-unsplash.jpg";
-
+import "../App.css";
 export const Cover = () => {
   return (
-    <div className="shadow-xl cover flex flex-col md:flex-row border  flex-wrap flex-grow-1 mb-20">
-      <div className="flex-[1.5]">
-        <img
-          src={cover}
-          className="md:h-full h-96 w-full  object-cover rounded-tl rounded-bl"
-        />
-      </div>
-      <div className="p-2 py-10 flex-[2]  text-white bg-[rgb(21,27,49)] bg-[linear-gradient(180deg,rgba(21,27,49,1)_0%,rgba(30,120,129,1)_100%)] text-3xl md:text-5xl rounded-tr rounded-br text-center flex items-center justify-center  flex-col gap-10">
-        <h1 className="border-b-2 uppercase  ">fall season</h1>
-        <p className="text-2xl md:text-3xl uppercase">50% off in wallets and hoodies</p>
+    <div className="flex flex-col md:flex-row items-center justify-center md:justify-between ">
+      <div className="relative flex justify-center items-end w-full h-[70dvh] md:h-[90dvh] md:w-2/4  ">
         <a
           href="#home"
-          className="text-lg md:text-2xl btn md:btn-wide uppercase bg-[#03343b] text-white border-none hover:opacity-70 hover:scale-90 hover:bg-inherit "
+          className="bg-[#e2ddb4] z-10  xd absolute bottom-10 md:hidden xd rounded text-2xl p-5 font-semibold shadow-xl hover:bg-[#f5eebc] hover:scale-95 transition-all"
         >
-          See now
+          SEE PRODUCTS
+        </a>
+        <img src={cover} className="img w-full object-cover h-full  " />
+      </div>
+      <div className="hidden md:flex w-2/4 items-center justify-center h-full relative bgCover  md:h-[90dvh] ">
+        <a
+          href="#home"
+          className="bg-[#e2ddb4] rounded text-2xl p-6 font-semibold shadow-xl hover:bg-[#f5eebc] hover:scale-95 transition-all "
+        >
+          SEE PRODUCTS NOW
         </a>
       </div>
     </div>

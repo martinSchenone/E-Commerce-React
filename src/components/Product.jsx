@@ -6,12 +6,12 @@ export const Product = ({ product }) => {
     <Link
       to={`/product/${product.id}`}
       key={product.id}
-      className=" border shadow-xl rounded flex flex-col justify- items-center justify-between max-h-[70vh]"
+      className=" border shadow-xl rounded flex flex-col justify- items-center"
     >
-      <div className="img p-4 h-3/4 border">
+      <div className="img p-4 flex items-center justify-center  w-full border h-full">
         <img
           src={product ? product.image : failLoadImage}
-          className="h-full w-full object-contain "
+          className="h-full w-full object-contain  "
         />
       </div>
       <div

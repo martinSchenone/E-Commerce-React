@@ -1,29 +1,60 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { CommerceContext } from "../context/context";
-
-const handleForm = (e) => {
-  e.preventDefault();
-};
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 export const Login = () => {
+  const schema = z.object({
+    email: z.string().email(),
+    password: z.string().min(8),
+  });
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+    resolver: zodResolver(schema),
+  });
+  const onSubmit = async (data) => {
+    try {
+      if (userValues) {
+        userValues.email === data.email && userValues.password === data.password
+          ? alert("things matches")
+          : alert("things not matches");
+      }
+    } catch (error) {
+      setError();
+    }
+  };
   const { userValues } = useContext(CommerceContext);
   const navigate = useNavigate();
   useEffect(() => {
     userValues && navigate("/user/profile");
   }, [userValues]);
+
   return (
     <div className="p-5 md:p-10 mt-20  border bg-[#f5f6f7] shadow-lg rounded-lg">
-      <form onSubmit={handleForm} className="form-control  w-full  gap-10">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="form-control  w-full  gap-10"
+      >
         <div className="flex flex-col gap-10">
           <label className="label flex-col justify-start items-start text-2xl font-semibold gap-5 text-center">
             <span className="cursor-pointer border-b-2 border-slate-500 ">
-              Username
+              Email
             </span>
             <input
+              {...register("email")}
               className="input w-[min(100%,600px)]  bg-slate-200 shadow-lg "
-              placeholder="Type your username"
-              type="text"
+              placeholder="Type your email"
+              type="email"
             />
           </label>
           <label className="label flex-col justify-start items-start text-2xl font-semibold gap-5 text-center relative">
@@ -31,6 +62,7 @@ export const Login = () => {
               Password
             </span>
             <input
+              {...register("password")}
               className="input w-[min(100%,600px)]  bg-slate-200 shadow-lg "
               placeholder="Type your password"
               type="password"
