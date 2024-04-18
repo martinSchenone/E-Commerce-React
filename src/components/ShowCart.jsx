@@ -36,13 +36,13 @@ export const ShowCart = () => {
                     className="h-full w-full object-contain md:max-w-28   "
                   />
                 </div>
-                <div className="cart_title text-md lg:text-xl font-normal md:flex-1">
+                <div className="cart_title  border-b-2 md:border-b-0 text-lg lg:text-xl font-normal md:flex-1">
                   <h1>{cartItem.title}</h1>
                 </div>
-                <div className="self-start md:self-center  text-sm md:text-lg md:flex-1">
+                <div className="self-start md:self-center text-lg md:flex-1">
                   <span className="text-gray-600">Quantity in cart: </span>
-                  <span>
-                    <b>{cartItem.quantity}</b>
+                  <span className="relative ">
+                    <span className="">{cartItem.quantity}</span>
                   </span>
                 </div>
                 <div className=" self-end md:self-center md:flex-1">
@@ -58,7 +58,7 @@ export const ShowCart = () => {
         </div>
         <div
           className={`md:mb-0 flex flex-col items-center md:flex-[1] md:self-start md:rounded-xl border-t-slate-300 justify-center total_cont fixed md:relative bottom-0 border w-full bg-slate-100 p-4 gap-2 ${
-            cart.length == 0 ? "md:opacity-70": "opacity-100"
+            cart.length == 0 ? "md:opacity-70" : "opacity-100"
           }`}
         >
           <div

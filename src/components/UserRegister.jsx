@@ -3,16 +3,19 @@ import { Register } from "./Register";
 import { Toast } from "./Toast";
 import { CommerceContext } from "../context/context";
 import { useForm } from "react-hook-form";
-import {z} from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
-const schema = z.object({
-  username: z.string(),
-  email:z.string().email(),
-  password:z.string().min(8),
-  confirmPassword:z.string().min(8)
-}).refine((data)=> data.password === data.confirmPassword , {
-  message: "Passwords don't match",
-  path: ["confirmPassword"],})
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+const schema = z
+  .object({
+    username: z.string(),
+    email: z.string().email(),
+    password: z.string().min(8),
+    confirmPassword: z.string().min(8),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords don't match",
+    path: ["confirmPassword"],
+  });
 /* me falta arreglar el toast, me falta verificar el user y crearlo previamente en un contexto y obtenerlo del localstorge */
 export const UserRegister = ({ setToast, toast }) => {
   const {
@@ -21,10 +24,10 @@ export const UserRegister = ({ setToast, toast }) => {
     setError,
     formState: { errors, isSubmitting },
   } = useForm({
-    defaultValues:{
-      email:"",
+    defaultValues: {
+      email: "",
     },
-    resolver:zodResolver(schema)
+    resolver: zodResolver(schema),
   });
   const { userValues, setUserValues } = useContext(CommerceContext);
   // const onChange = (e) => {
@@ -46,14 +49,14 @@ export const UserRegister = ({ setToast, toast }) => {
     localStorage.setItem("userValues", JSON.stringify(user));
   };
   const onSubmit = async (data) => {
-    try { 
+    try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      setUserValues(data)
-      addToLocal(data)
+      setUserValues(data);
+      addToLocal(data);
     } catch (error) {
-      setError("email",{
-        message:"this email is already taken"
-      })
+      setError("email", {
+        message: "this email is already taken",
+      });
     }
   };
   console.log(userValues);

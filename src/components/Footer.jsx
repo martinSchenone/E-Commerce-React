@@ -3,7 +3,7 @@ import linkedin from "../assets/linkedin.png";
 
 export const Footer = () => {
   return (
-    <footer className="footer items-center p-2 text-black text-lg font-semibold bg-slate-400 absolute bottom-0 ">
+    <footer className="footer items-center p-2 text-black text-lg font-semibold bg-slate-300 absolute bottom-0 ">
       <aside className="items-center grid-flow-col">
         <p>Martin schenone © 2024 - All right reserved</p>
       </aside>
