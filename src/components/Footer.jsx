@@ -3,11 +3,11 @@ import linkedin from "../assets/linkedin.png";
 
 export const Footer = () => {
   return (
-    <footer className="footer items-center p-2 text-black text-lg font-semibold bg-slate-300 absolute bottom-0 ">
-      <aside className="items-center grid-flow-col">
+    <footer className="footer grid-cols-2 items-center  p-2 text-black text-lg font-semibold bg-slate-300 absolute bottom-0 ">
+      <aside className="items-center grid-flow-col  w-full ">
         <p>Martin schenone © 2024 - All right reserved</p>
       </aside>
-      <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+      <nav className="grid-flow-col gap-4  w-full justify-end">
         <a
           href="https://github.com/martinSchenone"
           target="_blank"

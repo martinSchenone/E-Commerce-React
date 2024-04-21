@@ -5,6 +5,7 @@ import { CommerceContext } from "../context/context";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useNavigate } from "react-router-dom";
 const schema = z
   .object({
     username: z.string(),
@@ -45,6 +46,7 @@ export const UserRegister = ({ setToast, toast }) => {
   //     setToast(false);
   //   }, 2500);
   // };
+  const navigate = useNavigate()
   const addToLocal = (user) => {
     localStorage.setItem("userValues", JSON.stringify(user));
   };
@@ -53,6 +55,7 @@ export const UserRegister = ({ setToast, toast }) => {
       await new Promise((resolve) => setTimeout(resolve, 1000));
       setUserValues(data);
       addToLocal(data);
+      setTimeout(()=>navigate("/user/profile"),2500)
     } catch (error) {
       setError("email", {
         message: "this email is already taken",

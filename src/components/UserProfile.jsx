@@ -1,7 +1,7 @@
 import { useEffect, useContext } from "react";
 import { CommerceContext } from "../context/context";
 import { useNavigate } from "react-router-dom";
-
+import userIMG from "../assets/userPROFILE.png";
 export const UserProfile = () => {
   const navigate = useNavigate();
   const { cart, userValues, setUserValues } = useContext(CommerceContext);
@@ -9,18 +9,15 @@ export const UserProfile = () => {
     !userValues && navigate("/login");
   }, [userValues, cart]);
   const logOut = () => {
-    localStorage.removeItem("userValues")
-    setUserValues(null)
-  }
+    localStorage.removeItem("userValues");
+    setUserValues(null);
+  };
   return (
     <>
       {userValues && (
         <section className="p-2 pb-40 pt-10 flex flex-col items-center justify-start text-center gap-10 text-2xl">
-          <div className="text-3xl flex flex-col gap-2 ">
-            <img
-              src="https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light"
-              className="w-44"
-            />
+          <div className="text-3xl flex flex-col border-b-4 border-slate-100  rounded-xl border-r-4 shadow-xl p-2 items-center justify-center">
+            <img src={userIMG} className="w-44" />
             <span className="font-bold first-letter:uppercase">
               {userValues.username.length > 20
                 ? `${userValues.username.substring(0, 15)}...`
@@ -43,10 +40,7 @@ export const UserProfile = () => {
             >
               See your cart
             </button>
-            <button
-              className="btn px-5 text-xl btn-error "
-              onClick={logOut}
-            >
+            <button className="btn px-5 text-xl btn-error " onClick={logOut}>
               Log out
             </button>
           </div>

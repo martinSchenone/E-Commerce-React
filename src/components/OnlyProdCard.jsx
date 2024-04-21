@@ -5,7 +5,7 @@ export const OnlyProdCard = ({ onlyProd, addToCart, setWasAdd, wasAdd }) => {
       key={onlyProd.id}
       className="w-[min(80%,600px)] border   shadow-xl rounded flex flex-col justify-center items-center mb-40"
     >
-      <div className="h-full px-10 items-center flex justify-center">
+      <div className="h-full px-10 items-center flex justify-center py-4">
         <img src={onlyProd.image} className="max-h-72" />
       </div>
       <div
@@ -17,11 +17,15 @@ export const OnlyProdCard = ({ onlyProd, addToCart, setWasAdd, wasAdd }) => {
         <span>
           or 12 x <strong>$ {Math.round(onlyProd.price / 12)}.00</strong>
         </span>
-        <span className="text-md text-gray-600">{onlyProd.description}</span>
+        <span className="text-md text-gray-600">
+          {onlyProd.description.length > 90
+            ? `${onlyProd.description.substring(0, 90)}...`
+            : onlyProd.description}
+        </span>
       </div>
       <div className="self-start">
         <button
-          className="btn my-2 mx-2 bg-sky-500 hover:bg-sky-700 text-white "
+          className="btn my-2 mx-2 bg-sky-500 hover:bg-sky-700 text-white md:btn-lg "
           onClick={() => {
             addToCart(onlyProd);
             setWasAdd(true);
