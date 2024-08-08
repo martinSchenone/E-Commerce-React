@@ -7,8 +7,9 @@ import { ShowCart } from "./components/ShowCart";
 import { getProds } from "./utils/getProds";
 import { SearcherPage } from "./components/SearcherPage";
 import { UserLogin } from "./components/UserLogin";
-import {UserProfile} from './components/UserProfile'
+import { UserProfile } from "./components/UserProfile";
 import { UserRegister } from "./components/UserRegister";
+import NoMatch from "./components/NoMatch";
 /*
 Terminar nav y hacerlo responsive V
 empezar con el carrito (sessionStorage) V
@@ -76,7 +77,7 @@ function App() {
           element={<UserRegister toast={toast} setToast={setToast} />}
         />
         <Route path="/user/profile" element={<UserProfile />} />
-
+        <Route path="*" element={<NoMatch />} />
       </Routes>
     </>
   );

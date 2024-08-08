@@ -15,7 +15,7 @@ export const UserProfile = () => {
   return (
     <>
       {userValues && (
-        <section className="p-2 pb-40 pt-10 flex flex-col items-center justify-start text-center gap-10 text-2xl">
+        <section className="p-2 pb-40 pt-10 flex flex-col items-center justify-start text-center gap-10 text-2xl min-h-screen border border-black">
           <div className="text-3xl flex flex-col border-b-4 border-slate-100  rounded-xl border-r-4 shadow-xl p-2 items-center justify-center">
             <img src={userIMG} className="w-44" />
             <span className="font-bold first-letter:uppercase">
@@ -33,7 +33,7 @@ export const UserProfile = () => {
               <span>- {userValues.email}</span>
             </div>
           </div>
-          <div className="self-end flex w-full justify-between">
+          <div className=" flex w-full justify-between ">
             <button
               onClick={() => navigate("/user/cart")}
               className="btn text-xl btn-md btn-info"

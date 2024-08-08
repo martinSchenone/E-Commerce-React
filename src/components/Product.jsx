@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import failLoadImage from "../assets/failLoad.png";
-import "../App.css"
+import "../App.css";
+
 export const Product = ({ product }) => {
   return (
     <Link
@@ -22,10 +23,9 @@ export const Product = ({ product }) => {
       <div className="img p-4 flex items-center justify-center  w-full border h-full overflow-hidden">
         <img
           src={product ? product.image : failLoadImage}
-          className="h-full w-full object-contain img overflow-hidden"
+          className="h-full max-h-[200px] w-full object-contain img overflow-hidden"
         />
       </div>
-      
     </Link>
   );
 };

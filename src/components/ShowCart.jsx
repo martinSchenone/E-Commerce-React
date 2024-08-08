@@ -1,9 +1,10 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CommerceContext } from "../context/context";
 import trashcan from "../assets/trashcan.svg";
 import { NoProductsCart } from "./NoProductsCart";
 
 export const ShowCart = () => {
+  const [isBuyModal, setIsBuyModal] = useState(null);
   const { cart, setCart } = useContext(CommerceContext);
   const deleteProd = (prod) => {
     const deletedItem = cart?.filter((item) => item.id !== prod.id);
@@ -19,6 +20,10 @@ export const ShowCart = () => {
       .reduce((anterior, actual) => anterior + actual, 0)
       .toFixed(2) || [];
   useEffect(() => {}, [cart]);
+
+  const buyModal = () => {
+    setIsBuyModal(true);
+  };
   return (
     <div className="w-full mx-auto flex flex-col items-center justify-center gap-10 p-5 relative   ">
       <div className="flex flex-col relative container items-center justify-center md:flex-row mb-[20rem] z-10 md:mb-0 md:gap-10">
@@ -81,10 +86,39 @@ export const ShowCart = () => {
               cart.length == 0 ? "btn-disabled" : ""
             }`}
           >
-            <span>Buy</span>
+            <button onClick={() => buyModal()}>Buy</button>
           </div>
         </div>
       </div>
+      {isBuyModal && (
+        <div className="buy_container w-[90%] max-w-[500px]  fixed flex top-32 items-center justify-center min-h-72 z-50 bg-blue-50 border border-gray-400 shadow-xl">
+          <div className="flex flex-col gap-10 w-full p-4">
+            <div className="uppercase self-start text-xl font-semibold border-b-2">
+              <h1>Order confirmation</h1>
+            </div>
+            <div className="">
+              <div className="flex flex-col gap-6">
+                {cart &&
+                  cart?.map((itemCart) => (
+                    <div
+                      key={itemCart.id}
+                      className="text-sm flex border-b-2 text-start items-center justify-center"
+                    >
+                      <h1 className="flex-1">{itemCart.title}</h1>
+                      <span className="flex-[0.2] self-end">
+                        ({itemCart.quantity})
+                      </span>
+                    </div>
+                  ))}
+              </div>
+            </div>
+            <div className="uppercase font-bold">Total price ${itemsQuantity}</div>
+            <div className="uppercase text-sm btn bg-blue-300 text-gray-900 font-bold">
+              <h1>Confirm purchase</h1>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
