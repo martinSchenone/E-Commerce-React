@@ -5,6 +5,9 @@ import { NoProductsCart } from "./NoProductsCart";
 
 export const ShowCart = () => {
   const [isBuyModal, setIsBuyModal] = useState(null);
+  const [loadingPurchase, setLoadingPurchased] = useState(null);
+  const [thanksModal, setThanksModal] = useState(null);
+
   const { cart, setCart } = useContext(CommerceContext);
   const deleteProd = (prod) => {
     const deletedItem = cart?.filter((item) => item.id !== prod.id);
@@ -23,6 +26,23 @@ export const ShowCart = () => {
 
   const buyModal = () => {
     setIsBuyModal(true);
+  };
+  const confirmPurchase = async () => {
+    try {
+      setIsBuyModal(false);
+      setLoadingPurchased(true);
+      setTimeout(() => {
+        setLoadingPurchased(false);
+      }, 3000);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setTimeout(() => {
+        setThanksModal(true);
+        setCart([]);
+        addToLocal([]);
+      },3000)
+    }
   };
   return (
     <div className="w-full mx-auto flex flex-col items-center justify-center gap-10 p-5 relative   ">
@@ -112,9 +132,42 @@ export const ShowCart = () => {
                   ))}
               </div>
             </div>
-            <div className="uppercase font-bold">Total price ${itemsQuantity}</div>
+            <div className="uppercase font-bold">
+              Total price ${itemsQuantity}
+            </div>
             <div className="uppercase text-sm btn bg-blue-300 text-gray-900 font-bold">
-              <h1>Confirm purchase</h1>
+              <button onClick={() => confirmPurchase()}>
+                Confirm purchase
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      {loadingPurchase && (
+        <div className=" flex items-center justify-center z-10">
+          <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50 z-50"></div>
+          <div className="relative flex items-center justify-center">
+            <div className="fixed top-2/4">
+              <h1 className="text-3xl font-semibold text-white  bg-slate-600 px-4 py-2">
+                Loading purchase...
+              </h1>
+            </div>
+          </div>
+        </div>
+      )}
+      {thanksModal && (
+        <div className="thanks_container w-[90%] max-w-[500px] fixed flex top-32 items-center justify-center min-h-72 z-50 bg-green-50 border border-gray-400 shadow-xl">
+          <div className="flex flex-col gap-10 w-full p-4">
+            <div className="uppercase self-start text-xl font-semibold border-b-2">
+              <h1>Purchase successful</h1>
+            </div>
+            <div className="uppercase font-bold">
+              Your order has been placed successfully.
+            </div>
+            <div className="uppercase text-sm btn bg-green-300 text-gray-900 font-bold">
+              <button onClick={() => setThanksModal(false)}>
+                Close
+              </button>
             </div>
           </div>
         </div>
