@@ -25,17 +25,19 @@ export const Cover = () => {
           href="#home"
           className="
           text-center
-          bg-[#e2ddb4] 
+          bg-warning 
           md:rounded 
-          text-xl
-          md:text-2xl 
+          text-2xl
+          md:text-3xl 
           p-2
+          py-4
           md:p-4 
           font-semibold 
           shadow-xl 
-          hover:bg-[#f5eebc] 
+          hover:bg-yellow-500 
           hover:scale-95 
           transition-all
+
           w-full"
         >
           SEE PRODUCTS
